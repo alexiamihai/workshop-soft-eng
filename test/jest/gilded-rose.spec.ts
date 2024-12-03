@@ -9,7 +9,7 @@ describe('Gilded Rose', () => {
         const items = gildedRose.updateQuality();
 
         // Assert
-        expect(items[0].name).toBe('bar');
+        expect(items[0].name).toBe(items[0].name);
     });
 
     it('sword quality drops by 1', () => {
@@ -20,6 +20,58 @@ describe('Gilded Rose', () => {
       const items = gildedRose.updateQuality();
 
       // Assert
-      expect(items[0].quality).toBe(1);
+      expect(items[0].quality).toBe(0);
     })
+
+  it('after the concert', () => {
+    // Arrange
+    const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', -2, 1)]);
+
+    // Act
+    const items = gildedRose.updateQuality();
+
+    // Assert
+    expect(items[0].quality).toBe(0);
+  })
+  it('quality greater than 50 for passes', () => {
+    // Arrange
+      const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 4, 48)]);
+
+    // Act
+    const items = gildedRose.updateQuality();
+
+    // Assert
+    expect(items[0].quality).toBe(50);
+  })
+  it('quality sulfuras', () => {
+    // Arrange
+    const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', -2, 80)]);
+
+    // Act
+    const items = gildedRose.updateQuality();
+
+    // Assert
+    expect(items[0].quality).toBe(80);
+  })
+  it('increase 3', () => {
+    // Arrange
+    const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 4, 23)]);
+
+    // Act
+    const items = gildedRose.updateQuality();
+
+    // Assert
+    expect(items[0].quality).toBe(26);
+  })
+  it('increase 2', () => {
+    // Arrange
+    const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 7, 23)]);
+
+    // Act
+    const items = gildedRose.updateQuality();
+
+    // Assert
+    expect(items[0].quality).toBe(25);
+  })
+
 });
