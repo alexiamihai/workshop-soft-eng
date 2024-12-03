@@ -57,6 +57,7 @@ describe('Gilded Rose', () => {
     // Arrange
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 4, 23)]);
 
+
     // Act
     const items = gildedRose.updateQuality();
 
